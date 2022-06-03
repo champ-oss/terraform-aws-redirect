@@ -2,7 +2,10 @@ module github.com/champ-oss/terraform-aws-redirect
 
 go 1.17
 
-require github.com/gruntwork-io/terratest v0.40.12
+require (
+	github.com/gruntwork-io/terratest v0.40.13
+	github.com/stretchr/testify v1.7.0
+)
 
 require (
 	cloud.google.com/go v0.83.0 // indirect
@@ -18,7 +21,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.0.5 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-getter v1.5.9 // indirect
+	github.com/hashicorp/go-getter v1.5.11 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
 	github.com/hashicorp/go-version v1.3.0 // indirect
@@ -34,7 +37,6 @@ require (
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/tmccombs/hcl2json v0.3.3 // indirect
 	github.com/ulikunitz/xz v0.5.8 // indirect
 	github.com/zclconf/go-cty v1.9.1 // indirect
