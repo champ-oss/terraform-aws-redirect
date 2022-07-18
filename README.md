@@ -16,6 +16,9 @@ A Terraform module for creating an AWS Application Load Balancer and Route53 rec
 
 See the `examples/` folder
 
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
+
 ## Features
 
 
