@@ -11,8 +11,8 @@ data "aws_route53_zone" "this" {
 }
 
 module "vpc" {
-  source                   = "github.com/champ-oss/terraform-aws-vpc.git?ref=v1.0.39-9596bfc"
-  git                      = local.git
+  source                   = "github.com/champ-oss/terraform-aws-vpc.git?ref=v1.0.46-da2e05d"
+  name                     = local.git
   availability_zones_count = 2
   retention_in_days        = 1
   create_private_subnets   = false
