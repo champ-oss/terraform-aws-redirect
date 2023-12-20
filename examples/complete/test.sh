@@ -1,4 +1,4 @@
 set -e
 
-curl -v http://$HOSTNAME/ | grep github.com
-curl -v https://$HOSTNAME/ | grep github.com
+curl -v --silent http://$HOSTNAME/ 2>&1 | grep github.com
+curl -v --silent https://$HOSTNAME/ 2>&1 | grep github.com
