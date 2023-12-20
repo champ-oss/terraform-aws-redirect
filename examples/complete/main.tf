@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-1"
+  region = "us-east-2"
 }
 
 locals {
@@ -10,12 +10,22 @@ data "aws_route53_zone" "this" {
   name = "oss.champtest.net."
 }
 
-module "vpc" {
-  source                   = "github.com/champ-oss/terraform-aws-vpc.git?ref=v1.0.49-a63798e"
-  name                     = local.git
-  availability_zones_count = 2
-  retention_in_days        = 1
-  create_private_subnets   = false
+data "aws_vpcs" "this" {
+  tags = {
+    purpose = "vega"
+  }
+}
+
+data "aws_subnets" "this" {
+  tags = {
+    purpose = "vega"
+    Type    = "Public"
+  }
+
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpcs.this.ids[0]]
+  }
 }
 
 module "acm" {
@@ -36,6 +46,11 @@ module "this" {
   path              = "/search"
   query             = "q=aws"
   zone_id           = data.aws_route53_zone.this.zone_id
-  public_subnet_ids = module.vpc.public_subnets_ids
-  vpc_id            = module.vpc.vpc_id
+  public_subnet_ids = data.aws_subnets.this.ids
+  vpc_id            = data.aws_vpcs.this.ids[0]
+}
+
+output "hostname" {
+  description = "DNS hostname"
+  value       = "${local.git}.${data.aws_route53_zone.this.name}"
 }
